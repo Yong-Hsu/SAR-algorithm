@@ -8,7 +8,7 @@ except:
     pass
 import cv2
 
-from .utils import Transfer_matrix, Build_State, find_7index, show_probility_img3D
+from utils import Transfer_matrix, Build_State, find_7index, show_probility_img3D
 from tqdm import tqdm
 
 
@@ -146,9 +146,9 @@ def prior_predictive_distribution_copy(states_index, index_current=353, loop=200
 
 
 def get_states_index_random():
-    T_path = "sar/data_TVE/T.png"
-    V_path = "sar/data_TVE/V.png"
-    E_path = "sar/data_TVE/E.png"
+    T_path = "./data_TVE/T.png"
+    V_path = "./data_TVE/V.png"
+    E_path = "./data_TVE/E.png"
     build_State = Build_State(T_path, V_path, E_path)
     states_index = build_State.TVE_states_index
     return states_index

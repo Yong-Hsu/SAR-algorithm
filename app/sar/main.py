@@ -8,6 +8,7 @@ from .gibbs import Gibbs_M_H_sampler
 from tqdm import tqdm
 import random
 import cv2
+from os import path
 
 from .calculate_a_b import get_states_index_random
 # from utils import show_probility_img3D
@@ -15,9 +16,9 @@ from .calculate_a_b import get_states_index_random
 
 def matrix_prob_608():
 
-    alphas = np.load("./data_npy/alphas.npy")  # (21,)
-    betas = np.load("./data_npy/betas.npy")  # (21,)
-    thetas = np.load("./data_npy/thetas.npy")  # (21,)
+    # alphas = np.load("./data_npy/alphas.npy")  # (21,)
+    # betas = np.load("./data_npy/betas.npy")  # (21,)
+    thetas = np.load(path.join(path.dirname(__file__), "data_npy/thetas.npy"))
 
     '''
     
@@ -41,7 +42,7 @@ def matrix_prob_608():
         # plt.savefig('out.png')
         # plt.show()
 
-    samples_matrix = np.load("samples_matrix.npy")  # (10000, 21)
+    samples_matrix = np.load(path.join(path.dirname(__file__), "samples_matrix.npy"))  # (10000, 21)
 
     # posterior predictive distribution
     state_transition_matrix = np.zeros((608, 608))

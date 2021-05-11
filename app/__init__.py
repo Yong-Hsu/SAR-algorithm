@@ -1,5 +1,5 @@
 from flask import Flask
-from sar.main import matrix_prob_608
+from main import matrix_prob_608
 import logging
 
 app = Flask(__name__)
@@ -14,7 +14,7 @@ def service_status():
 
 @app.route('/608test', methods=['GET', 'POST'])
 def matrix608_send():
-    return {'matrix_prob': matrix_prob_608()}
+    return {'matrix_prob': matrix_prob_608()[1, 1]}
 
 
 @app.before_first_request
