@@ -1,7 +1,6 @@
 from flask import Flask
 from sar.main import matrix_prob_608
 import logging
-import sys
 
 app = Flask(__name__)
 
