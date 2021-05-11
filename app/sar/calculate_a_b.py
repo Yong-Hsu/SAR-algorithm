@@ -8,7 +8,7 @@ except:
     pass
 import cv2
 
-from utils import Transfer_matrix, Build_State, find_7index, show_probility_img3D
+from .utils import Transfer_matrix, Build_State, find_7index, show_probility_img3D
 from tqdm import tqdm
 
 

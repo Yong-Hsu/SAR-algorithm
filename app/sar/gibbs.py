@@ -1,12 +1,11 @@
-
 import matplotlib.pyplot as plt
 import numpy as np
 from scipy.stats import beta, norm
 import random
 from tqdm import tqdm
 
-from get_direction_prob import theta_21to3, cal_7directions_probability
-from calculate_a_b import get_states_index_random
+from .get_direction_prob import theta_21to3, cal_7directions_probability
+from .calculate_a_b import get_states_index_random
 
 # observations (np.ndarray, nX2): observations, [[index, direction_index], ..., [index, direction_index]].
 # alphas (np.ndarray, 21X1): alphas of thetas distribution.
@@ -14,12 +13,13 @@ from calculate_a_b import get_states_index_random
 # thetas (np.ndarray, 21X1): thetas.
 # states_index (np.ndarray, 608X3): information of the map.
 
+from os import path
 
-alphas = np.load("./alphas.npy")
-betas = np.load("./betas.npy")
+alphas = np.load(path.join(path.dirname(__file__), 'alphas.npy'))
+betas = np.load(path.join(path.dirname(__file__), "betas.npy"))
 # thetas = np.load("./thetas.npy")
-observations = np.load("./observations.npy")
-states_index = np.load("./states_index.npy")
+observations = np.load(path.join(path.dirname(__file__), "observations.npy"))
+states_index = np.load(path.join(path.dirname(__file__), "states_index.npy"))
 
 
 def process(thetas):
@@ -47,6 +47,7 @@ def process(thetas):
                 tmp_observation[index_next] = 1
                 observations_matrix_n7s[i, :] = tmp_observation
         return prob_matrix_n7s, observations_matrix_n7s        
+
 
 def P(i, thetas):
         """PDF used in the M-H algorithm.

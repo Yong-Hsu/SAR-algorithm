@@ -2,15 +2,15 @@ import numpy as np
 from scipy.stats import beta
 import matplotlib.pyplot as plt
 
-from get_direction_prob import theta_21to3, cal_7directions_probability, cal_7directions_probability_poster
-from gibbs import Gibbs_M_H_sampler
+from .get_direction_prob import theta_21to3, cal_7directions_probability, cal_7directions_probability_poster
+from .gibbs import Gibbs_M_H_sampler
 
 from tqdm import tqdm
 import random
 import cv2
 
-from calculate_a_b import get_states_index_random
-from utils import show_probility_img3D
+from .calculate_a_b import get_states_index_random
+# from utils import show_probility_img3D
 
 
 def matrix_prob_608():
