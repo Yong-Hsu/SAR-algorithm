@@ -1,8 +1,10 @@
 from flask import Flask
 from main import matrix_prob_608
 import logging
+from flask.ext.cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 from app import views
 
@@ -14,7 +16,7 @@ def service_status():
 
 @app.route('/608test', methods=['GET', 'POST'])
 def matrix608_send():
-    return {'matrix_prob': matrix_prob_608()[1, 1]}
+    return {'matrix_prob': matrix_prob_608().tolist()}
 
 
 @app.before_first_request
