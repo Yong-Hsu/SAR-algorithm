@@ -1,10 +1,10 @@
 from flask import Flask
-from main import matrix_prob_608
+from main import matrix_prob_608, fast_matrix
 import logging
-from flask.ext.cors import CORS
+# from flask.ext.cors import CORS
 
 app = Flask(__name__)
-CORS(app)
+# CORS(app)
 
 from app import views
 
@@ -19,9 +19,13 @@ def matrix608_send():
     return {'matrix_prob': matrix_prob_608().tolist()}
 
 
-@app.before_first_request
-def setup_logging():
-    if not app.debug:
-        # In production mode, add log handler to sys.stderr.
-        app.logger.addHandler(logging.StreamHandler())
-        app.logger.setLevel(logging.INFO)
+@app.route('/608fast', methods=['GET', 'POST'])
+def fast608():
+    return {fast_matrix().tolist()}
+
+
+@app.after_request
+def add_headers(response):
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
+    return response

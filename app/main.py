@@ -98,3 +98,25 @@ def matrix_prob_608():
     b = p_data * 255
 
     return b
+
+
+def fast_matrix():
+    input_vector = np.zeros((1, 608))
+    start_index = 353
+    input_vector[0, start_index] = 1
+
+    B = np.load("transition_matrix.npy")
+    step = 200
+    A = input_vector
+    print("\nAfter 200 iterations ......")
+    for i in tqdm(range(step)):
+        B = np.dot(np.mat(B), np.mat(B))
+        B /= np.max(B)
+
+    probility_distribution_608s = np.dot(np.mat(A), np.mat(B))  # (1, 608)
+
+    p_data = np.array(probility_distribution_608s)
+    p_data = np.reshape(p_data, (32, 19))
+    b = p_data * 255
+
+    return b

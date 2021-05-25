@@ -2,6 +2,7 @@
 
 https://itnext.io/setup-flask-project-using-docker-and-gunicorn-4dcaaa829620
 
+
 chmod +x gunicorn.sh
 
 docker build -t flask/flask_docker .
