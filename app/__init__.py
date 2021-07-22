@@ -21,7 +21,7 @@ def matrix608_send():
 
 @app.route('/608fast', methods=['GET', 'POST'])
 def fast608():
-    return {fast_matrix().tolist()}
+    return {'matrix_prob': fast_matrix().tolist()}
 
 
 @app.after_request
